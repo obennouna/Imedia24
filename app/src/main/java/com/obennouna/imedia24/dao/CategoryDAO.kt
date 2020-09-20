@@ -8,7 +8,7 @@ import com.obennouna.imedia24.pojo.Category
 
 @Dao
 interface CategoryDAO {
-    @Query("SELECT * FROM Category")
+    @Query("SELECT * FROM Category ORDER BY displayName ASC")
     suspend fun getAll(): List<Category>?
 
     @Query("SELECT * FROM category WHERE displayName LIKE :categoryName LIMIT 1")

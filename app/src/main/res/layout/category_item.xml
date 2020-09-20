@@ -13,7 +13,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingStart="@dimen/margin_item_rv"
+        android:paddingEnd="@dimen/margin_item_rv"
+        android:paddingTop="@dimen/padding_item_rv"
+        android:paddingBottom="@dimen/padding_item_rv">
+
+        <ImageView
+            android:id="@+id/category_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/category_icon_content_description"
+            android:src="@drawable/baseline_category_black_36"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/category_name"
@@ -21,11 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_item_rv"
             android:layout_marginLeft="@dimen/margin_item_rv"
-            android:paddingTop="@dimen/padding_item_rv"
-            android:paddingBottom="@dimen/padding_item_rv"
             android:text="@{model.displayName}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            app:layout_constraintBottom_toBottomOf="@id/category_placeholder"
+            app:layout_constraintStart_toEndOf="@id/category_placeholder"
+            app:layout_constraintTop_toTopOf="@id/category_placeholder"
             tools:text="My category" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

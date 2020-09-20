@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Category
 import kotlinx.android.synthetic.main.fragment_gallery.*
+
 
 class CategoriesFragment : Fragment() {
 
@@ -43,6 +45,7 @@ class CategoriesFragment : Fragment() {
         categories_rv.setHasFixedSize(true)
         categories_rv.layoutManager = LinearLayoutManager(context)
         categories_rv.itemAnimator = DefaultItemAnimator()
+        categories_rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         categories_rv.adapter = categoriesAdapter
 
         galleryViewModel.getCategories(requireContext())

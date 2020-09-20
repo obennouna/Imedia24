@@ -10,8 +10,7 @@ import com.obennouna.imedia24.utils.CategoryTypeConverter
 @Keep
 @Entity
 data class Category(
-    @PrimaryKey(autoGenerate = true) val uid: Int,
-    val id: Int,
+    @PrimaryKey val categoryId: Int,
     val displayName: String?,
     val resultCount : Int,
     val children: ArrayList<Category>
