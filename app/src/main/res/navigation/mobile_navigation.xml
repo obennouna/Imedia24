@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.obennouna.imedia24.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_categories"
+        android:name="com.obennouna.imedia24.ui.categories.CategoriesFragment"
+        android:label="@string/menu_categories"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.obennouna.imedia24.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:id="@+id/nav_search"
+        android:name="com.obennouna.imedia24.ui.search.SearchFragment"
+        android:label="@string/menu_search"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
