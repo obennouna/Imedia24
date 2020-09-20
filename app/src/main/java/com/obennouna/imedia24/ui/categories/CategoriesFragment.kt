@@ -15,9 +15,9 @@ import com.obennouna.imedia24.pojo.Category
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 
-class CategoriesFragment : Fragment() {
+class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {
 
-    private lateinit var galleryViewModel: CategoriesViewModel
+    private lateinit var categoryViewModel: CategoriesViewModel
     private val categoriesAdapter = CategoriesAdapter()
 
     override fun onCreateView(
@@ -25,9 +25,9 @@ class CategoriesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
+        categoryViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        galleryViewModel.categories.observe(viewLifecycleOwner, Observer {
+        categoryViewModel.categories.observe(viewLifecycleOwner, Observer {
             displayCategories(it)
             progress_circular.visibility = View.GONE
         })
@@ -47,7 +47,12 @@ class CategoriesFragment : Fragment() {
         categories_rv.itemAnimator = DefaultItemAnimator()
         categories_rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         categories_rv.adapter = categoriesAdapter
+        categoriesAdapter.onItemClickListener(this)
 
-        galleryViewModel.getCategories(requireContext())
+        categoryViewModel.getCategories(requireContext())
+    }
+
+    override fun onItemClickListener(category: Category) {
+        categoryViewModel.setCategories(category.children)
     }
 }

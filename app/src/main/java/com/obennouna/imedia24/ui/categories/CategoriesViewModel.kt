@@ -23,7 +23,15 @@ class CategoriesViewModel : ViewModel() {
             GlobalScope.launch(Dispatchers.Main) {
                 value = context.let { categoryRepository.getCategories(it) }
                 Log.d(CategoriesViewModel::class.simpleName, "Result size : " + value?.size)
+                Log.d(CategoriesViewModel::class.simpleName, "Result[0].categoryId : " + value?.get(0)?.categoryId)
             }
+        }
+    }
+
+    fun setCategories(categories: List<Category>) {
+        _categories.apply {
+            value = categories
+            Log.d(CategoriesViewModel::class.simpleName, "Result[0].categoryId : " + value?.get(0)?.categoryId)
         }
     }
 }
