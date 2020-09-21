@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.databinding.ProductItemBinding
 import com.obennouna.imedia24.viewmodel.product.ProductViewModel
@@ -50,6 +53,16 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
         fun bind(data: ProductViewModel) {
             binding.model = data
             binding.root.setOnClickListener(this)
+
+            Glide
+                .with(binding.root.context)
+                .load(data.buildImageUrl())
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.baseline_attach_money_black_24)
+                        .error(R.drawable.baseline_attach_money_black_24).dontTransform()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL))
+                .into(binding.root.findViewById(R.id.product_placeholder))
             binding.executePendingBindings()
         }
 

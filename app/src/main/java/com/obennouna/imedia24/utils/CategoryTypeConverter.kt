@@ -29,4 +29,15 @@ class CategoryTypeConverter {
     fun fromPrice(price: Price?): String? {
         return Gson().toJson(price)
     }
+
+    @TypeConverter
+    fun fromStringUri(value: String?): ArrayList<String>? {
+        val listType: Type = object : TypeToken<ArrayList<String?>?>() {}.type
+       return Gson().fromJson(value, listType)
+    }
+
+    @TypeConverter
+    fun fromUri(uri: List<String>?): String? {
+        return Gson().toJson(uri)
+    }
 }

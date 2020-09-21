@@ -10,63 +10,75 @@
             type="com.obennouna.imedia24.viewmodel.product.ProductViewModel" />
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingStart="@dimen/margin_item_rv"
-        android:paddingTop="@dimen/padding_item_rv"
-        android:paddingEnd="@dimen/margin_item_rv"
-        android:paddingBottom="@dimen/padding_item_rv">
+        android:layout_margin="@dimen/padding_item_rv"
+        android:foreground="?android:attr/selectableItemBackground">
 
-        <ImageView
-            android:id="@+id/product_placeholder"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/product_icon_content_description"
-            android:src="@drawable/baseline_attach_money_black_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:paddingLeft="@dimen/margin_item_rv"
+            android:paddingStart="@dimen/margin_item_rv"
+            android:paddingRight="@dimen/margin_item_rv"
+            android:paddingEnd="@dimen/margin_item_rv">
+
+            <ImageView
+                android:id="@+id/product_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/product_icon_content_description"
+                android:src="@drawable/baseline_attach_money_black_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_item_rv"
-            android:layout_marginLeft="@dimen/margin_item_rv"
-            android:text="@{model.displayName()}"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            app:layout_constraintBottom_toBottomOf="@id/product_placeholder"
-            app:layout_constraintStart_toEndOf="@id/product_placeholder"
-            app:layout_constraintTop_toTopOf="@id/product_placeholder"
-            tools:text="My product" />
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{model.displayName()}"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_placeholder"
+                tools:text="My product" />
 
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_item_rv"
-            android:layout_marginLeft="@dimen/margin_item_rv"
-            android:text="@{model.displayPrice()}"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            app:layout_constraintBottom_toBottomOf="@id/product_placeholder"
-            app:layout_constraintEnd_toStartOf="@+id/product_detail"
-            app:layout_constraintTop_toTopOf="@id/product_placeholder"
-            tools:text="100€" />
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.displayPrice()}"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_name"
+                tools:text="100€" />
 
-        <ImageView
-            android:id="@+id/product_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/product_detail_content_description"
-            android:src="@drawable/baseline_chevron_right_black_24"
-            app:layout_constraintBottom_toBottomOf="@id/product_placeholder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/product_placeholder" />
+            <TextView
+                android:id="@+id/product_reference_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.displayReferencePrice()}"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textColor="@android:color/holo_orange_dark"
+                android:visibility="@{model.shouldDisplayReferencePrice()}"
+                app:layout_constraintStart_toEndOf="@id/product_price"
+                app:layout_constraintTop_toBottomOf="@id/product_name"
+                tools:text="100€" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/product_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/product_add_cart_content_description"
+                android:src="@drawable/baseline_add_shopping_cart_black_48"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_price" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

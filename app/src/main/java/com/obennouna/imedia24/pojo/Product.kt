@@ -14,5 +14,6 @@ data class Product(
     var categoryId: Int,
     val nameShort: String,
     val averageStars: Int,
-    val productPrice: Price
+    val productPrice: Price,
+    val imageUris: ArrayList<String>
 ) : Parcelable
