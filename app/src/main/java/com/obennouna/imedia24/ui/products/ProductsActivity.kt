@@ -26,6 +26,7 @@ class ProductsActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.root_container, ProductsFragment.navigateTo(category!!))
                 .commitAllowingStateLoss()
+            title = category.displayName
         }
     }
 }

@@ -11,6 +11,7 @@ class MigrationDB {
                 database.execSQL(
                     "CREATE TABLE IF NOT EXISTS `product`"+
                             " (`sku` INTEGER NOT NULL,"+
+                            "`categoryId` INTEGER NOT NULL" +
                             "`nameShort` TEXT NOT NULL,"+
                             "`averageStars` INTEGER NOT NULL,"+
                             "`productPrice` TEXT NOT NULL,"+

@@ -11,6 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Product(
     @PrimaryKey val sku: Int,
+    var categoryId: Int,
     val nameShort: String,
     val averageStars: Int,
     val productPrice: Price
