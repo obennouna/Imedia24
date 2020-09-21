@@ -19,10 +19,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/margin_item_rv"
             android:paddingStart="@dimen/margin_item_rv"
-            android:paddingRight="@dimen/margin_item_rv"
-            android:paddingEnd="@dimen/margin_item_rv">
+            android:paddingLeft="@dimen/margin_item_rv"
+            android:paddingEnd="@dimen/margin_item_rv"
+            android:paddingRight="@dimen/margin_item_rv">
 
             <ImageView
                 android:id="@+id/product_placeholder"
@@ -43,6 +43,7 @@
                 android:maxLines="1"
                 android:text="@{model.displayName()}"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/product_placeholder"
                 tools:text="My product" />
@@ -54,6 +55,7 @@
                 android:text="@{model.displayPrice()}"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                 android:textStyle="bold"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/product_name"
                 tools:text="100€" />
@@ -69,6 +71,16 @@
                 app:layout_constraintStart_toEndOf="@id/product_price"
                 app:layout_constraintTop_toBottomOf="@id/product_name"
                 tools:text="100€" />
+
+            <RatingBar
+                android:id="@+id/product_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:rating="@{model.getRating()}"
+                android:saveEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_price" />
 
             <ImageView
                 android:id="@+id/product_detail"

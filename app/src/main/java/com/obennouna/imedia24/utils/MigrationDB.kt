@@ -15,6 +15,7 @@ class MigrationDB {
                             "`nameShort` TEXT NOT NULL,"+
                             "`averageStars` INTEGER NOT NULL,"+
                             "`productPrice` TEXT NOT NULL,"+
+                            "`imageUris` TEXT NOT NULL," +
                             "PRIMARY KEY(`sku`))"
                 )
             }

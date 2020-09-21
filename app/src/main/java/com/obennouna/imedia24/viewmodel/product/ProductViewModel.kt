@@ -29,6 +29,10 @@ class ProductViewModel(val product: Product) {
         return View.GONE
     }
 
+    fun getRating(): Float {
+        return product.averageStars.toFloat()
+    }
+
     fun buildImageUrl(): String {
         if (!product.imageUris.isNullOrEmpty()) {
             return "https://pic.hse24-dach.net/media/de/products/" + product.imageUris[0] + "pics480.jpg"
