@@ -4,18 +4,29 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.obennouna.imedia24.pojo.Category
+import com.obennouna.imedia24.pojo.Price
 import java.lang.reflect.Type
 
 class CategoryTypeConverter {
+
     @TypeConverter
-    fun fromString(value: String?): ArrayList<Category?>? {
+    fun fromStringCategories(value: String?): ArrayList<Category?>? {
         val listType: Type = object : TypeToken<ArrayList<Category?>?>() {}.type
         return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
     fun fromCategories(list: ArrayList<Category?>?): String? {
-        val gson = Gson()
-        return gson.toJson(list)
+        return Gson().toJson(list)
+    }
+
+    @TypeConverter
+    fun fromStringPrice(value: String?): Price? {
+       return Gson().fromJson(value, Price::class.java)
+    }
+
+    @TypeConverter
+    fun fromPrice(price: Price?): String? {
+        return Gson().toJson(price)
     }
 }

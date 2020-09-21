@@ -1,6 +1,7 @@
 package com.obennouna.imedia24.network
 
 import com.obennouna.imedia24.pojo.Category
+import com.obennouna.imedia24.pojo.ResponseProduct
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -22,7 +23,7 @@ interface IMedia24API {
         "locale: de_DE"
     )
     @GET("/ext-api/app/1/c/**/*-{categoryId}")
-    suspend fun getProductsByCategory(@Path(value = "categoryId") categoryId: Int): Response<Category>
+    suspend fun getProductsByCategory(@Path(value = "categoryId") categoryId: Int): Response<ResponseProduct>
 
     @Headers(
         "Accept: application/json",

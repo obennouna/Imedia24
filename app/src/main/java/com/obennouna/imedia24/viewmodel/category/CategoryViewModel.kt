@@ -1,4 +1,4 @@
-package com.obennouna.imedia24.ui.categories
+package com.obennouna.imedia24.viewmodel.category
 
 import com.obennouna.imedia24.pojo.Category
 

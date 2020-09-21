@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.ui.products.ProductsActivity
+import com.obennouna.imedia24.viewmodel.category.CategoriesViewModel
+import com.obennouna.imedia24.viewmodel.category.CategoryViewModel
 import kotlinx.android.synthetic.main.fragment_categories.*
 
 class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {

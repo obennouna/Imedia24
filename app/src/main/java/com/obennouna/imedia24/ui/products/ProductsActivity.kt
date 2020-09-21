@@ -21,5 +21,11 @@ class ProductsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_products)
+        if (savedInstanceState == null && intent.hasExtra(CATEGORY)) {
+            val category = intent.getParcelableExtra<Category>(CATEGORY)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.root_container, ProductsFragment.navigateTo(category!!))
+                .commitAllowingStateLoss()
+        }
     }
 }

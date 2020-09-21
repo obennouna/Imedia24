@@ -1,4 +1,4 @@
-package com.obennouna.imedia24.ui.categories
+package com.obennouna.imedia24.viewmodel.category
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -29,7 +29,11 @@ class CategoriesViewModel : ViewModel() {
     private fun transformToViewModel(listCategories: List<Category>): List<CategoryViewModel>? {
         val toReturn: ArrayList<CategoryViewModel> = ArrayList()
         for (category in listCategories) {
-            toReturn.add(CategoryViewModel(category))
+            toReturn.add(
+                CategoryViewModel(
+                    category
+                )
+            )
         }
         return toReturn
     }

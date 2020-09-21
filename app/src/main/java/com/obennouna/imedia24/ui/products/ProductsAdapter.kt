@@ -1,4 +1,4 @@
-package com.obennouna.imedia24.ui.categories
+package com.obennouna.imedia24.ui.products
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,17 +6,21 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.obennouna.imedia24.R
-import com.obennouna.imedia24.databinding.CategoryItemBinding
-import com.obennouna.imedia24.viewmodel.category.CategoryViewModel
+import com.obennouna.imedia24.databinding.ProductItemBinding
+import com.obennouna.imedia24.viewmodel.product.ProductViewModel
 
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
-    private var categories: ArrayList<CategoryViewModel> = ArrayList()
+class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+
+    private var products: ArrayList<ProductViewModel> = ArrayList()
     private var mListener: OnItemClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding: CategoryItemBinding = DataBindingUtil.inflate(
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ProductsAdapter.ViewHolder {
+        val binding: ProductItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.category_item,
+            R.layout.product_item,
             parent,
             false
         )
@@ -24,25 +28,26 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return categories.size
+        return products.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(categories[position])
+        holder.bind(products[position])
     }
 
     fun onItemClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-    fun setData(newCategories: List<CategoryViewModel>) {
-        categories.clear()
-        categories.addAll(newCategories)
+    fun setData(newProducts: List<ProductViewModel>) {
+        products.clear()
+        products.addAll(newProducts)
     }
 
-    inner class ViewHolder(private val binding: CategoryItemBinding) :
+    inner class ViewHolder(private val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-        fun bind(data: CategoryViewModel) {
+
+        fun bind(data: ProductViewModel) {
             binding.model = data
             binding.root.setOnClickListener(this)
             binding.executePendingBindings()
@@ -54,6 +59,6 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClickListener(category: CategoryViewModel)
+        fun onItemClickListener(product: ProductViewModel)
     }
 }

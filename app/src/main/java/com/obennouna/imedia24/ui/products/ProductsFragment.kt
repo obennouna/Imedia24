@@ -1,7 +1,5 @@
 package com.obennouna.imedia24.ui.products
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +12,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Category
-import kotlinx.android.synthetic.main.fragment_categories.*
+import com.obennouna.imedia24.viewmodel.product.ProductViewModel
+import com.obennouna.imedia24.viewmodel.product.ProductsViewModel
+import kotlinx.android.synthetic.main.fragment_products.*
 
-class ProductsFragment: Fragment() {
+class ProductsFragment: Fragment(), ProductsAdapter.OnItemClickListener {
 
     companion object {
         private const val CATEGORY = "CATEGORY"
@@ -32,7 +32,7 @@ class ProductsFragment: Fragment() {
     }
 
     private lateinit var productViewModel: ProductsViewModel
-//    private val categoriesAdapter = CategoriesAdapter()
+    private val productsAdapter = ProductsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,33 +40,38 @@ class ProductsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         productViewModel = ViewModelProvider(this).get(ProductsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_categories, container, false)
-        productViewModel.categories.observe(viewLifecycleOwner, Observer {
-            displayCategories(it)
+        val root = inflater.inflate(R.layout.fragment_products, container, false)
+        productViewModel.products.observe(viewLifecycleOwner, Observer {
+            displayProducts(it)
             progress_circular.visibility = View.GONE
         })
         return root
     }
 
-    private fun displayCategories(categories: List<Category>) {
-//        categoriesAdapter.setData(categories)
-//        categoriesAdapter.notifyDataSetChanged()
+    private fun displayProducts(products: List<ProductViewModel>) {
+        productsAdapter.setData(products)
+        productsAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        categories_rv.setHasFixedSize(true)
-        categories_rv.layoutManager = LinearLayoutManager(context)
-        categories_rv.itemAnimator = DefaultItemAnimator()
-        categories_rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-//        categories_rv.adapter = categoriesAdapter
-//        categoriesAdapter.onItemClickListener(this)
+        products_rv.setHasFixedSize(true)
+        products_rv.layoutManager = LinearLayoutManager(context)
+        products_rv.itemAnimator = DefaultItemAnimator()
+        products_rv.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        products_rv.adapter = productsAdapter
+        productsAdapter.onItemClickListener(this)
 
-        productViewModel.getCategories(requireContext())
+        if (requireArguments().containsKey(CATEGORY)) {
+            productViewModel.getCategories(
+                requireContext(),
+                requireArguments().getParcelable<Category>(CATEGORY)!!.categoryId
+            )
+        }
     }
 
-//    override fun onItemClickListener(category: Category) {
-//        TODO("Display Product + sub categories")
-//    }
+    override fun onItemClickListener(product: ProductViewModel) {
+        TODO("Not yet implemented")
+    }
 }

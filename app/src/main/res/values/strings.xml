@@ -16,5 +16,7 @@
 
     <!-- Accessibility-->
     <string name="category_icon_content_description">Category Icon Placeholder</string>
-    <string name="category_expand_collapse_content_description">Expand/Collapse</string>
+    <string name="category_detail_content_description">Category Detail</string>
+    <string name="product_icon_content_description">Product Icon Placeholder</string>
+    <string name="product_detail_content_description">Product Detail</string>
 </resources>

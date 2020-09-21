@@ -1,7 +1,6 @@
 package com.obennouna.imedia24.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.obennouna.imedia24.pojo.Category
@@ -16,10 +15,4 @@ interface CategoryDAO {
 
     @Insert
     suspend fun insertAll(categories: List<Category>)
-
-    @Delete
-    suspend fun delete(category: Category)
-
-    @Query("DELETE FROM category")
-    suspend fun nukeTable()
 }
