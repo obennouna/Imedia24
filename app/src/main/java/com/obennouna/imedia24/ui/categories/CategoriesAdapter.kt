@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.obennouna.imedia24.R
-import com.obennouna.imedia24.databinding.CategoryItemBinding
+import com.obennouna.imedia24.databinding.ItemCategoryBinding
 import com.obennouna.imedia24.viewmodel.category.CategoryViewModel
 
 class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
@@ -14,9 +14,9 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     private var mListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding: CategoryItemBinding = DataBindingUtil.inflate(
+        val binding: ItemCategoryBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.category_item,
+            R.layout.item_category,
             parent,
             false
         )
@@ -40,7 +40,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
         categories.addAll(newCategories)
     }
 
-    inner class ViewHolder(private val binding: CategoryItemBinding) :
+    inner class ViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(data: CategoryViewModel) {
             binding.model = data

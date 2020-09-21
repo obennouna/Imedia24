@@ -10,9 +10,6 @@ interface CategoryDAO {
     @Query("SELECT * FROM Category ORDER BY displayName ASC")
     suspend fun getAll(): List<Category>?
 
-    @Query("SELECT * FROM category WHERE displayName LIKE :categoryName LIMIT 1")
-    suspend fun findByName(categoryName: String): Category?
-
     @Insert
     suspend fun insertAll(categories: List<Category>)
 }

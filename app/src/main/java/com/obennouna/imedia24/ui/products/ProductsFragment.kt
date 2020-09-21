@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Category
+import com.obennouna.imedia24.ui.productDetail.ProductDetailActivity
 import com.obennouna.imedia24.viewmodel.product.ProductViewModel
 import com.obennouna.imedia24.viewmodel.product.ProductsViewModel
 import kotlinx.android.synthetic.main.fragment_products.*
@@ -64,7 +65,7 @@ class ProductsFragment: Fragment(), ProductsAdapter.OnItemClickListener {
         productsAdapter.onItemClickListener(this)
 
         if (requireArguments().containsKey(CATEGORY)) {
-            productViewModel.getCategories(
+            productViewModel.getProductsByCategory(
                 requireContext(),
                 requireArguments().getParcelable<Category>(CATEGORY)!!.categoryId
             )
@@ -72,6 +73,6 @@ class ProductsFragment: Fragment(), ProductsAdapter.OnItemClickListener {
     }
 
     override fun onItemClickListener(product: ProductViewModel) {
-        TODO("Not yet implemented")
+        startActivity(context?.let { ProductDetailActivity.navigateTo(product.product, it) })
     }
 }

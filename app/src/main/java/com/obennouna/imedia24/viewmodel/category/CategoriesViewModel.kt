@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.obennouna.imedia24.pojo.Category
-import com.obennouna.imedia24.repository.CategoryRepository
+import com.obennouna.imedia24.repository.category.CategoryRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

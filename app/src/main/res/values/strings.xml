@@ -13,6 +13,7 @@
     <string name="menu_search">Search</string>
 
     <string name="products">Products</string>
+    <string name="product_detail">Detail Product</string>
 
     <!-- Accessibility-->
     <string name="category_icon_content_description">Category Icon Placeholder</string>

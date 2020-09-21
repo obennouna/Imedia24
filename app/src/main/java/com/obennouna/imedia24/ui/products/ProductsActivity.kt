@@ -25,7 +25,7 @@ class ProductsActivity : AppCompatActivity() {
             val category = intent.getParcelableExtra<Category>(CATEGORY)
             supportFragmentManager.beginTransaction()
                 .replace(R.id.root_container, ProductsFragment.navigateTo(category!!))
-                .commitAllowingStateLoss()
+                .commit()
             title = category.displayName
         }
     }

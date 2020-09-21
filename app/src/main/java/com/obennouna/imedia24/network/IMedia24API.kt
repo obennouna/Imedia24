@@ -1,6 +1,8 @@
 package com.obennouna.imedia24.network
 
 import com.obennouna.imedia24.pojo.Category
+import com.obennouna.imedia24.pojo.Product
+import com.obennouna.imedia24.pojo.ProductDetail
 import com.obennouna.imedia24.pojo.ResponseProduct
 import retrofit2.Response
 import retrofit2.http.GET
@@ -31,6 +33,6 @@ interface IMedia24API {
         "locale: de_DE"
     )
     @GET("/ext-api/app/1/product/{sku}")
-    suspend fun getProductByCategory(@Path(value = "sku") sku: Int): Response<Category>
+    suspend fun getProductByCategory(@Path(value = "sku") sku: Int): Response<ProductDetail>
 
 }

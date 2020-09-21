@@ -5,19 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.obennouna.imedia24.pojo.Product
-import com.obennouna.imedia24.repository.ProductRepository
+import com.obennouna.imedia24.repository.product.ProductsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class ProductsViewModel : ViewModel() {
 
-    private val productRepository = ProductRepository()
+    private val productRepository = ProductsRepository()
     private val _products: MutableLiveData<List<ProductViewModel>> = MutableLiveData()
 
     var products: LiveData<List<ProductViewModel>> = _products
 
-    fun getCategories(context: Context, categoryId: Int) {
+    fun getProductsByCategory(context: Context, categoryId: Int) {
         _products.apply {
             GlobalScope.launch(Dispatchers.Main) {
                 val listProducts = context.let { productRepository.getProductsByCategory(it, categoryId) }

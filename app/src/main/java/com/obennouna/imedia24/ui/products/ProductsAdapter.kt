@@ -11,7 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.obennouna.imedia24.R
-import com.obennouna.imedia24.databinding.ProductItemBinding
+import com.obennouna.imedia24.databinding.ItemProductBinding
 import com.obennouna.imedia24.viewmodel.product.ProductViewModel
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
@@ -23,9 +23,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): ProductsAdapter.ViewHolder {
-        val binding: ProductItemBinding = DataBindingUtil.inflate(
+        val binding: ItemProductBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.product_item,
+            R.layout.item_product,
             parent,
             false
         )
@@ -49,7 +49,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
         products.addAll(newProducts)
     }
 
-    inner class ViewHolder(private val binding: ProductItemBinding) :
+    inner class ViewHolder(private val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
         fun bind(data: ProductViewModel) {

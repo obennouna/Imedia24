@@ -55,7 +55,6 @@
                 android:text="@{model.displayPrice()}"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                 android:textStyle="bold"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/product_name"
                 tools:text="100€" />

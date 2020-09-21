@@ -1,4 +1,4 @@
-package com.obennouna.imedia24.repository
+package com.obennouna.imedia24.repository.product
 
 import android.content.Context
 import com.obennouna.imedia24.database.AppDatabase
@@ -6,7 +6,7 @@ import com.obennouna.imedia24.network.IMedia24APIAdapter
 import com.obennouna.imedia24.pojo.Product
 import java.util.ArrayList
 
-class ProductRepository {
+class ProductsRepository {
 
     /**
      * The reasoning behind this is that Categories aren't something that will change in the future (in general).
