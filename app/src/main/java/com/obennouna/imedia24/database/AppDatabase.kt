@@ -10,7 +10,7 @@ import com.obennouna.imedia24.pojo.Category
 import com.obennouna.imedia24.utils.CategoryTypeConverter
 import com.obennouna.imedia24.utils.SingletonHolder
 
-@Database(entities = arrayOf(Category::class), version = 2, exportSchema = false)
+@Database(entities = [Category::class], version = 1, exportSchema = false)
 @TypeConverters(CategoryTypeConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun categoryDao(): CategoryDAO

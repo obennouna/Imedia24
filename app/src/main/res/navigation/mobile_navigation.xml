@@ -15,11 +15,12 @@
         android:id="@+id/nav_categories"
         android:name="com.obennouna.imedia24.ui.categories.CategoriesFragment"
         android:label="@string/menu_categories"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_categories" />
 
     <fragment
         android:id="@+id/nav_search"
         android:name="com.obennouna.imedia24.ui.search.SearchFragment"
         android:label="@string/menu_search"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_search" />
+
 </navigation>

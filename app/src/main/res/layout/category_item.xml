@@ -7,19 +7,19 @@
 
         <variable
             name="model"
-            type="com.obennouna.imedia24.pojo.Category" />
+            type="com.obennouna.imedia24.ui.categories.CategoryViewModel" />
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
         android:paddingStart="@dimen/margin_item_rv"
-        android:paddingEnd="@dimen/margin_item_rv"
         android:paddingTop="@dimen/padding_item_rv"
+        android:paddingEnd="@dimen/margin_item_rv"
         android:paddingBottom="@dimen/padding_item_rv">
 
         <ImageView
@@ -32,6 +32,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/category_nb_subcategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.displaySubCategories()}"
+            android:textColor="@android:color/holo_orange_light"
+            app:layout_constraintEnd_toEndOf="@id/category_placeholder"
+            app:layout_constraintStart_toEndOf="@id/category_placeholder"
+            app:layout_constraintTop_toTopOf="@id/category_placeholder"
+            tools:text="10" />
+
+        <TextView
             android:id="@+id/category_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,8 +51,19 @@
             android:text="@{model.displayName}"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
             app:layout_constraintBottom_toBottomOf="@id/category_placeholder"
-            app:layout_constraintStart_toEndOf="@id/category_placeholder"
+            app:layout_constraintStart_toEndOf="@id/category_nb_subcategories"
             app:layout_constraintTop_toTopOf="@id/category_placeholder"
             tools:text="My category" />
+
+        <ImageView
+            android:id="@+id/category_expand_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/category_expand_collapse_content_description"
+            android:src="@drawable/baseline_chevron_right_black_24"
+            app:layout_constraintBottom_toBottomOf="@id/category_placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/category_placeholder"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

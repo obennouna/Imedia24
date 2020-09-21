@@ -12,6 +12,9 @@
     <string name="menu_categories">Categories</string>
     <string name="menu_search">Search</string>
 
+    <string name="products">Products</string>
+
     <!-- Accessibility-->
     <string name="category_icon_content_description">Category Icon Placeholder</string>
+    <string name="category_expand_collapse_content_description">Expand/Collapse</string>
 </resources>

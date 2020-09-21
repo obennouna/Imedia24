@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.obennouna.imedia24.R
-import com.obennouna.imedia24.pojo.Category
-import kotlinx.android.synthetic.main.fragment_gallery.*
-
+import com.obennouna.imedia24.ui.products.ProductsActivity
+import kotlinx.android.synthetic.main.fragment_categories.*
 
 class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {
 
@@ -26,7 +25,7 @@ class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         categoryViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        val root = inflater.inflate(R.layout.fragment_categories, container, false)
         categoryViewModel.categories.observe(viewLifecycleOwner, Observer {
             displayCategories(it)
             progress_circular.visibility = View.GONE
@@ -34,7 +33,7 @@ class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {
         return root
     }
 
-    private fun displayCategories(categories: List<Category>) {
+    private fun displayCategories(categories: List<CategoryViewModel>) {
         categoriesAdapter.setData(categories)
         categoriesAdapter.notifyDataSetChanged()
     }
@@ -52,7 +51,7 @@ class CategoriesFragment : Fragment(), CategoriesAdapter.OnItemClickListener {
         categoryViewModel.getCategories(requireContext())
     }
 
-    override fun onItemClickListener(category: Category) {
-        categoryViewModel.setCategories(category.children)
+    override fun onItemClickListener(category: CategoryViewModel) {
+        startActivity(context?.let { ProductsActivity.navigateTo(category.category, it) })
     }
 }

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class SearchViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "In due time, this screen can implement a search feature with the name (only found by categoryID or SKU in the doc)"
     }
     val text: LiveData<String> = _text
 }
