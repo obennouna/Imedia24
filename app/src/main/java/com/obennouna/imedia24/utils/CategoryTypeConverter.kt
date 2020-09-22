@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.obennouna.imedia24.pojo.Category
 import com.obennouna.imedia24.pojo.Price
+import com.obennouna.imedia24.pojo.Product
 import java.lang.reflect.Type
 
 class CategoryTypeConverter {
@@ -39,5 +40,15 @@ class CategoryTypeConverter {
     @TypeConverter
     fun fromUri(uri: List<String>?): String? {
         return Gson().toJson(uri)
+    }
+
+    @TypeConverter
+    fun fromStringProduct(value: String?): Product? {
+        return Gson().fromJson(value, Product::class.java)
+    }
+
+    @TypeConverter
+    fun fromProduct(product: Product?): String? {
+        return Gson().toJson(product)
     }
 }

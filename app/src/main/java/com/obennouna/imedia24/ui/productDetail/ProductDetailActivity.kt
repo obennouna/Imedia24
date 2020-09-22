@@ -3,9 +3,12 @@ package com.obennouna.imedia24.ui.productDetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Product
+import com.obennouna.imedia24.ui.cart.CartActivity
 
 class ProductDetailActivity : AppCompatActivity() {
 
@@ -28,5 +31,17 @@ class ProductDetailActivity : AppCompatActivity() {
                 .commit()
             title = product.nameShort
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.items_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.display_cart) {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

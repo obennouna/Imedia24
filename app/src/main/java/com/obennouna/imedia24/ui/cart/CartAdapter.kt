@@ -1,4 +1,4 @@
-package com.obennouna.imedia24.ui.products
+package com.obennouna.imedia24.ui.cart
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,22 +10,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.obennouna.imedia24.R
-import com.obennouna.imedia24.databinding.ItemProductBinding
-import com.obennouna.imedia24.pojo.Product
-import com.obennouna.imedia24.viewmodel.product.ProductViewModel
+import com.obennouna.imedia24.databinding.ItemCartBinding
+import com.obennouna.imedia24.pojo.CartItem
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+class CartAdapter: RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
-    private var products: ArrayList<ProductViewModel> = ArrayList()
+    private var cartItems: ArrayList<CartItem> = ArrayList()
     private var mListener: OnItemClickListener? = null
-
+    
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ProductsAdapter.ViewHolder {
-        val binding: ItemProductBinding = DataBindingUtil.inflate(
+    ): CartAdapter.ViewHolder {
+        val binding: ItemCartBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.item_product,
+            R.layout.item_cart,
             parent,
             false
         )
@@ -33,26 +32,25 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return products.size
+        return cartItems.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(products[position])
+    override fun onBindViewHolder(holder: CartAdapter.ViewHolder, position: Int) {
+        holder.bind(cartItems[position])
     }
 
     fun onItemClickListener(listener: OnItemClickListener) {
         mListener = listener
     }
 
-    fun setData(newProducts: List<ProductViewModel>) {
-        products.clear()
-        products.addAll(newProducts)
+    fun setData(newProducts: List<CartItem>) {
+        cartItems.clear()
+        cartItems.addAll(newProducts)
     }
-
-    inner class ViewHolder(private val binding: ItemProductBinding) :
+    inner class ViewHolder(private val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        fun bind(data: ProductViewModel) {
+        fun bind(data: CartItem) {
             binding.model = data
             binding.root.setOnClickListener(this)
             Glide
@@ -64,15 +62,15 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
                         .error(R.drawable.baseline_attach_money_black_24).dontTransform()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                 )
-                .into(binding.root.findViewById(R.id.product_placeholder))
-            binding.root.findViewById<ImageView>(R.id.product_add_cart)
+                .into(binding.root.findViewById(R.id.cart_item_placeholder))
+            binding.root.findViewById<ImageView>(R.id.cart_item_remove_item)
                 .setOnClickListener(this)
             binding.executePendingBindings()
         }
 
         override fun onClick(v: View?) {
             if (v is ImageView) {
-                mListener?.onItemAddedToCart(binding.model!!.product)
+                mListener?.onItemDeleted(binding.model!!)
             } else {
                 mListener?.onItemClickListener(binding.model!!)
             }
@@ -80,7 +78,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClickListener(product: ProductViewModel)
-        fun onItemAddedToCart(product: Product)
+        fun onItemClickListener(cartItem: CartItem)
+        fun onItemDeleted(cartItem: CartItem)
     }
 }

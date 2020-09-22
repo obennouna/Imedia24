@@ -11,13 +11,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.snackbar.Snackbar
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Product
 import com.obennouna.imedia24.pojo.ProductDetail
+import com.obennouna.imedia24.repository.cart.CartRepository
 import com.obennouna.imedia24.viewmodel.productDetail.ProductDetailViewModel
 import kotlinx.android.synthetic.main.fragment_product_detail.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class ProductDetailFragment : Fragment() {
+class ProductDetailFragment : Fragment(), View.OnClickListener {
 
     companion object {
         private const val PRODUCT = "PRODUCT"
@@ -71,6 +76,7 @@ class ProductDetailFragment : Fragment() {
         } else {
             product_description.text = Html.fromHtml(productDetail.longDescription)
         }
+        product_add_cart.setOnClickListener(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -81,5 +87,16 @@ class ProductDetailFragment : Fragment() {
                 requireArguments().getParcelable<Product>(PRODUCT)!!.sku
             )
         }
+    }
+
+    override fun onClick(v: View?) {
+        GlobalScope.launch(Dispatchers.Main) {
+            context?.let { CartRepository().insertProduct(it, requireArguments().getParcelable(PRODUCT)!!) }
+        }
+        Snackbar.make(
+            product_title,
+            productDetailViewModel.productDetail.value!!.nameShort+ " added to Cart",
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 }

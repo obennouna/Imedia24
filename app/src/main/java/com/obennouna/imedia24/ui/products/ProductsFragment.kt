@@ -10,12 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.obennouna.imedia24.R
 import com.obennouna.imedia24.pojo.Category
+import com.obennouna.imedia24.pojo.Product
+import com.obennouna.imedia24.repository.cart.CartRepository
 import com.obennouna.imedia24.ui.productDetail.ProductDetailActivity
 import com.obennouna.imedia24.viewmodel.product.ProductViewModel
 import com.obennouna.imedia24.viewmodel.product.ProductsViewModel
 import kotlinx.android.synthetic.main.fragment_products.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ProductsFragment: Fragment(), ProductsAdapter.OnItemClickListener {
 
@@ -74,5 +80,16 @@ class ProductsFragment: Fragment(), ProductsAdapter.OnItemClickListener {
 
     override fun onItemClickListener(product: ProductViewModel) {
         startActivity(context?.let { ProductDetailActivity.navigateTo(product.product, it) })
+    }
+
+    override fun onItemAddedToCart(product: Product) {
+        GlobalScope.launch(Dispatchers.Main) {
+            context?.let { CartRepository().insertProduct(it, product) }
+        }
+        Snackbar.make(
+            products_rv,
+            product.nameShort+ " added to Cart",
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 }

@@ -11,12 +11,15 @@
     <string name="menu_home">Home</string>
     <string name="menu_categories">Categories</string>
     <string name="menu_search">Search</string>
+    <string name="menu_cart">Display Cart</string>
 
     <string name="products">Products</string>
     <string name="product_detail">Detail Product</string>
+    <string name="cart">Cart</string>
 
     <string name="price">Price : %.2f€</string>
     <string name="reference_price">Reference Price : %.2f€</string>
+    <string name="total_price">Total : %.2f€</string>
 
     <!-- Accessibility-->
     <string name="category_icon_content_description">Category Icon Placeholder</string>
