@@ -6,6 +6,9 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="logo_width">150dp</dimen>
-    <dimen name="padding_item_rv">8dp</dimen>
-    <dimen name="margin_item_rv">4dp</dimen>
+
+    <!-- Margin/Padding -->
+    <dimen name="big_margin">16dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
 </resources>

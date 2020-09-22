@@ -1,6 +1,7 @@
 package com.obennouna.imedia24.ui.productDetail
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ import com.obennouna.imedia24.pojo.ProductDetail
 import com.obennouna.imedia24.viewmodel.productDetail.ProductDetailViewModel
 import kotlinx.android.synthetic.main.fragment_product_detail.*
 
-class ProductDetailFragment: Fragment() {
+class ProductDetailFragment : Fragment() {
 
     companion object {
         private const val PRODUCT = "PRODUCT"
@@ -61,6 +62,15 @@ class ProductDetailFragment: Fragment() {
                 .into(product_image)
         }
         product_title.text = productDetail.title
+        product_rating.rating = productDetail.averageStars
+        product_reference_price.text = productDetailViewModel.displayReferencePrice(context)
+        product_price.text = getString(R.string.price, productDetail.productPrice.price)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            product_description.text =
+                Html.fromHtml(productDetail.longDescription, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            product_description.text = Html.fromHtml(productDetail.longDescription)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

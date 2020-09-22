@@ -15,6 +15,9 @@
     <string name="products">Products</string>
     <string name="product_detail">Detail Product</string>
 
+    <string name="price">Price : %.2f€</string>
+    <string name="reference_price">Reference Price : %.2f€</string>
+
     <!-- Accessibility-->
     <string name="category_icon_content_description">Category Icon Placeholder</string>
     <string name="category_detail_content_description">Category Detail</string>

@@ -16,17 +16,17 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:focusable="true"
-        android:paddingStart="@dimen/margin_item_rv"
-        android:paddingTop="@dimen/padding_item_rv"
-        android:paddingEnd="@dimen/margin_item_rv"
-        android:paddingBottom="@dimen/padding_item_rv">
+        android:paddingStart="@dimen/small_margin"
+        android:paddingTop="@dimen/default_margin"
+        android:paddingEnd="@dimen/small_margin"
+        android:paddingBottom="@dimen/default_margin">
 
         <ImageView
             android:id="@+id/category_placeholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/category_icon_content_description"
-            android:src="@drawable/baseline_category_black_36"
+            app:srcCompat="@drawable/baseline_category_black_36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,8 +45,8 @@
             android:id="@+id/category_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_item_rv"
-            android:layout_marginLeft="@dimen/margin_item_rv"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
             android:text="@{model.displayName}"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
             app:layout_constraintBottom_toBottomOf="@id/category_placeholder"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/category_detail_content_description"
-            android:src="@drawable/baseline_chevron_right_black_24"
+            app:srcCompat="@drawable/baseline_chevron_right_black_24"
             app:layout_constraintBottom_toBottomOf="@id/category_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/category_placeholder"/>
