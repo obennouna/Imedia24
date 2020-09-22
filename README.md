@@ -37,3 +37,4 @@ The goal of this application is to provide a simple eCommerce application with s
 - Add number of element in the icon in cart as a badge
 - Add translations for at least English and German
 - Add some new screen for tablet users
+- Sorry for the ".idea" folder, forgot the .gitignore in the initial commit :(
