@@ -16,6 +16,6 @@ data class CartItem(
     }
 
     fun displayQuantity(): String {
-        return quantity.toString()
+        return "x$quantity"
     }
 }

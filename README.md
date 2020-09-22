@@ -10,3 +10,5 @@ TODO
 - Have also the SharedPref accessed in background
 - Remove both ViewModels to keep only one
 - Give the possibility in the cart to reduce the number
+- Optimize Styles in layout
+- Add Swipe to delete in Cart Screen

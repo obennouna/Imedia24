@@ -56,12 +56,6 @@ class CartFragment : Fragment(), CartAdapter.OnItemClickListener {
         cart_item_rv.setHasFixedSize(true)
         cart_item_rv.layoutManager = LinearLayoutManager(context)
         cart_item_rv.itemAnimator = DefaultItemAnimator()
-        cart_item_rv.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
-            )
-        )
         cart_item_rv.adapter = cartAdapter
 
         context?.let { cartViewModel.getProductsByCategory(it) }
