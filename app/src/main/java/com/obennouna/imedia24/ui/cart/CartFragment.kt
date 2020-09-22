@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.obennouna.imedia24.R
@@ -57,6 +56,10 @@ class CartFragment : Fragment(), CartAdapter.OnItemClickListener {
         cart_item_rv.layoutManager = LinearLayoutManager(context)
         cart_item_rv.itemAnimator = DefaultItemAnimator()
         cart_item_rv.adapter = cartAdapter
+
+        cart_validate.setOnClickListener{
+            Snackbar.make(it, "Not yet implemented, keep your money for now :)", Snackbar.LENGTH_LONG).show()
+        }
 
         context?.let { cartViewModel.getProductsByCategory(it) }
     }
